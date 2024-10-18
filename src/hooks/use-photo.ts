@@ -20,7 +20,12 @@ export const usePhoto = ({ videoRef, photoRef }: Props) => {
     const getMedia = async () => {
       try {
         stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: 'environment', width: 1280, height: 720 },
+          video: {
+            facingMode: 'environment',
+            width: 640,
+            height: 480,
+          },
+          audio: false,
         })
 
         setIsDeviceAllowed(true)
@@ -48,7 +53,7 @@ export const usePhoto = ({ videoRef, photoRef }: Props) => {
     const ctx = photo?.getContext('2d')
 
     const photoWidth = 400
-    const photoHeight = 300
+    const photoHeight = 400
 
     ctx?.drawImage(video, 0, 0, photoWidth, photoHeight)
 
